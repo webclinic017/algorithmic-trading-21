@@ -1,9 +1,9 @@
 import backtrader as bt
 from alpaca_trade_api.rest import TimeFrame
-from api_client import rest_api
-from prediction import classification
+from lib.api_client import rest_api
+from lib.prediction import classification
 import pandas as pd
-from TickerData import TickerData
+from lib.TickerData import TickerData
 
 def backtest(strategy, tickers, start, end, cash=10000, timeframe=TimeFrame.Day):
     sandbox = bt.Cerebro(stdstats=True)

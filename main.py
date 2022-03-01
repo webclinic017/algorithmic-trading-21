@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-import algorithm
+from lib import algorithm
 
 if __name__ == '__main__':
     load_dotenv()

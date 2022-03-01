@@ -1,8 +1,8 @@
 from alpaca_trade_api.rest import REST, TimeFrame
-from draw import plot_candlestick
-from backtest import backtest
-from strategy import SimpleStrategy
-from api_client import rest_api
+from lib.draw import plot_candlestick
+from lib.backtest import backtest
+from lib.strategy import SimpleStrategy
+from lib.api_client import rest_api
 
 def run():
     print('algorithm is running')
