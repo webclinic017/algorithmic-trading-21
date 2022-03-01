@@ -1,6 +1,9 @@
 import backtrader as bt
 from alpaca_trade_api.rest import TimeFrame
 from api_client import rest_api
+from prediction import classification
+import pandas as pd
+from TickerData import TickerData
 
 def backtest(strategy, tickers, start, end, cash=10000, timeframe=TimeFrame.Day):
     sandbox = bt.Cerebro(stdstats=True)
@@ -13,7 +16,12 @@ def backtest(strategy, tickers, start, end, cash=10000, timeframe=TimeFrame.Day)
     if type(tickers) == list:
         for ticker in tickers:
             alpaca_data = rest_api.get_bars(ticker, timeframe, start, end, adjustment='all').df
-            data = bt.feeds.PandasData(dataname=alpaca_data, name=ticker)
+    
+            predictions = classification.predict(alpaca_data['close'])
+            prices = predictions.join(alpaca_data, how='right').dropna()
+
+            data = TickerData(dataname=prices, name=ticker)
+
             sandbox.adddata(data)
 
     initial_cash = sandbox.broker.getvalue()

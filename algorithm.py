@@ -6,9 +6,10 @@ from api_client import rest_api
 
 def run():
     print('algorithm is running')
-    # data = prepare_data(api_key, secret_key)
+    data = prepare_data()
+
     # plot_candlestick(data)
-    backtest(SimpleStrategy, 'AAPL', '2019-12-01', '2022-01-30')
+    backtest(SimpleStrategy, 'AAPL', '2021-06-10', '2022-01-30')
 
 
 def prepare_data():

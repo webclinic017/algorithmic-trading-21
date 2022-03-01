@@ -9,6 +9,11 @@ backtrader = "*"
 matplotlib = "==3.2.2"
 plotly = "*"
 python-dotenv = "*"
+scipy = "*"
+tensorflow = "*"
+sklearn = "*"
+ipython = "*"
+seaborn = "*"
 
 [dev-packages]
 
