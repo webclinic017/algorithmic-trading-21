@@ -40,10 +40,7 @@ def predict(data):
     plot_return_comparison(df, strategies)
     df.to_csv('.cache/classification.csv', sep='\t')
 
-    predictions = df['strategy_svm']
-    predictions = pd.DataFrame(predictions)
-    predictions.rename(columns = {'strategy_svm': 'predicted'}, inplace=True)
-    return predictions
+    return df, strategies
 
 def evaluate_strats(df, models):
     strategies = []

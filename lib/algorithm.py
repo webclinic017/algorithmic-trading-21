@@ -9,7 +9,7 @@ def run():
     data = prepare_data()
 
     # plot_candlestick(data)
-    backtest(SimpleStrategy, 'AAPL', '2021-06-10', '2022-01-30')
+    backtest(SimpleStrategy, 'DELL', '2021-06-10', '2022-01-30')
 
 
 def prepare_data():
