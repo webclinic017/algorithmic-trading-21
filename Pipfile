@@ -14,6 +14,11 @@ tensorflow = "*"
 sklearn = "*"
 ipython = "*"
 seaborn = "*"
+nltk = "*"
+yahoofinance = "==0.0.2"
+yfinance = "*"
+requests = "*"
+html5lib = "*"
 
 [dev-packages]
 

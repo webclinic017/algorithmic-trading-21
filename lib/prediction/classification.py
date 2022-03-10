@@ -8,9 +8,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
 import logging
 
-logging.basicConfig(filename=".cache/classification.log", level=logging.INFO, filemode='w')
+logging.basicConfig(filename=".logs/classification.log", level=logging.INFO, filemode='w')
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+
 
 def predict(data):
     df = data.to_frame()
@@ -18,7 +19,7 @@ def predict(data):
     df['returns'] = np.log(df / df.shift(1))
     df.dropna(inplace=True)
     df['direction'] = np.sign(df['returns']).astype(int)
-    plot_daily_returns(df)
+    # plot_daily_returns(df)
 
     lag_cols = add_lags(df)
     cols_bin = add_bins(df, lag_cols)
@@ -37,8 +38,8 @@ def predict(data):
     logger.info(df[strategies].sum().apply(np.exp))
     logger.info('\nAnnual Volatility:')
     logger.info(df[strategies].std() * 252 ** 0.5)
-    plot_return_comparison(df, strategies)
-    df.to_csv('.cache/classification.csv', sep='\t')
+    # plot_return_comparison(df, strategies)
+    df.to_csv('.logs/classification.csv', sep='\t')
 
     return df, strategies
 
@@ -95,7 +96,7 @@ def plot_daily_returns(df, save=True):
     plt.legend()
     plt.tight_layout()
     if save == True:
-        plt.savefig('.cache/daily_returns', dpi=300)
+        plt.savefig('.logs/daily_returns', dpi=300)
         plt.clf()
     else:
         plt.show()
@@ -107,7 +108,7 @@ def plot_return_comparison(df, strategies, save=True):
     ax.grid(True)
     plt.tight_layout()
     if save == True:
-        plt.savefig('.cache/classifiers_return', dpi=300)
+        plt.savefig('.logs/classifiers_return', dpi=300)
         plt.clf()
     else:
         plt.show()
